@@ -1,4 +1,6 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+
+import styles from './styles';
 
 interface TaskProps {
     task: {
@@ -10,7 +12,7 @@ interface TaskProps {
 }
 
 export default function Task({ task, onComplete, onDelete }: TaskProps) {
-    return <View style={taskStyles.taskContainer}>
+    return <View style={styles.taskContainer}>
         <TouchableOpacity onPress={onComplete} disabled={task.completed}>
             <Text style={{ textDecorationLine: task.completed ? 'line-through' : 'none' }}>
                 {task.text}
@@ -22,16 +24,3 @@ export default function Task({ task, onComplete, onDelete }: TaskProps) {
         {task.completed && <Text>Concluído</Text>}
     </View>
 }
-
-const taskStyles = StyleSheet.create({
-    taskContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 10,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 5,
-        marginBottom: 10,
-    },
-});
